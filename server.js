@@ -3,7 +3,6 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require("body-parser");
 const path = require("path");
-const dotenv = require('dotenv')
 const session =require("express-session");
 const { uuid } = require('uuidv4');
 const router = require("./routes/index");
@@ -21,7 +20,7 @@ app.use(bodyParser.json());
 
 
 app.use('/docs',swaggerUI.serve, swaggerUI.setup(require('./swagger.json')))
-// const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3002;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -30,7 +29,7 @@ app.use('/static',express.static(path.join(__dirname,'public')));
 app.use('/assets',express.static(path.join(__dirname,'public/assets')))
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret:"SHANDYabc",
     resalve: false,
     saveUninitialized:true
 }));
@@ -46,7 +45,4 @@ app.use('/route',routes);
 //app.use(authRoutes);
 
 // app.get('/',(req, res) => res.render('index'));
-require('dotenv').config()
-app.listen(process.env.PORT || 3010, () => {
-    console.log('server running on port ', process.env.PORT);
-});
+app.listen(port,()=> console.log(`server running on port ${port}`))
