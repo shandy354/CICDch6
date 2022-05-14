@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require("body-parser");
 const path = require("path");
+const dotenv = require('dotenv')
 const session =require("express-session");
 const { uuid } = require('uuidv4');
 const router = require("./routes/index");
@@ -29,7 +30,7 @@ app.use('/static',express.static(path.join(__dirname,'public')));
 app.use('/assets',express.static(path.join(__dirname,'public/assets')))
 
 app.use(session({
-    secret:uuid(),
+    secret: process.env.SESSION_SECRET,
     resalve: false,
     saveUninitialized:true
 }));
