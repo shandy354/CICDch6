@@ -46,6 +46,7 @@ app.use('/route',routes);
 //app.use(authRoutes);
 
 // app.get('/',(req, res) => res.render('index'));
+require('dotenv').config()
 app.listen(process.env.PORT || 3010, () => {
     console.log('server running on port ', process.env.PORT);
 });
