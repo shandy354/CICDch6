@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<table class="table table-hover">
+    <a href="/view/history/create" class="btn btn-primary px-3 py-1">Add Data </a>
+    <thead>
+        <tr class="text-center">
+            <td>Id</td>
+            <td>Diamon</td>
+            <td>Tiket</td>
+            <td>Battle point</td>
+            <td>Item</td>
+            <td>Score</td>
+            <td>Login</td>
+            <td>Logout</td>
+            <td>UserId</td>
+            <td>Action</td>
+        </tr>
+        <% for(var i=0; i<history.length; i++) {%>
+            <tr class="text-center">
+                <td><%= history[i].id %></td>
+                <td><%= history[i].diamon %></td>
+                <td><%= history[i].tiket %></td>
+                <td><%= history[i].battle_point %></td>
+                <td><%= history[i].item %></td>
+                <td><%= history[i].score %></td>
+                <td><%= history[i].login %></td>
+                <td><%= history[i].logout %></td>
+                <td><%= history[i].userId %></td>
+                <td class="text-center">
+                    <a href="/view/edit/<%= history[i].id %>" class="btn btn-primary px-3 py-1">Edit</a>
+                    <a href="/view/delete/<%= history[i].id %>" class="text-danger  px-3 py-1 text-decoration-none">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+    </thead>
+  </table>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
